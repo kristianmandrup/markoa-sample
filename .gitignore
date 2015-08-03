@@ -1,0 +1,11 @@
+node_modules
+.DS_Store
+test/fixtures/marko/*.js
+views/*.js
+public/css/*.css
+
+.cache/
+static/
+build/
+
+views/**/*.js

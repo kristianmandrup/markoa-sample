@@ -1,0 +1,21 @@
+{
+  "plugins": [
+    "lasso-marko"
+  ],
+  "outputDir": "public/static",
+  "fingerprintsEnabled": true,
+  "minify": false,
+  "resolveCssUrls": true,
+  "bundlingEnabled": false,
+  "bundles": [{
+    "name": "jquery",
+    "dependencies": [
+      "require: jquery"
+    ]
+  }, {
+    "name": "bootstrap",
+    "dependencies": [
+      "require: bootstrap"
+    ]
+  }]
+}

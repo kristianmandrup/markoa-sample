@@ -1,0 +1,10 @@
+{
+  "dependencies": [
+    "require-run: jquery",
+    "require-run: bootstrap",
+    "../../../node_modules/bootstrap/dist/css/bootstrap-theme.css",
+    "../../../node_modules/bootstrap/dist/css/bootstrap.css",
+    "../../../node_modules/font-awesome/css/font-awesome.css",
+    "../../../public/css/*.css"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "repo-man",
+  "version": "0.1.0",
+  "description": "Serving Content in Koajs with Marko",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "koajs",
+    "Marko",
+    "nodejs"
+  ],
+  "authors": [
+    "Javier Cabrera <cabrerajavier@gmail.com>",
+    "Kristian Mandrup <kmandrup@gmail.com>"
+  ],
+  "devDependencies": {
+    "co-body": "^1.0.0",
+    "co-mocha": "^1.1.0",
+    "co-supertest": "0.0.7",
+    "colors": "^1.0.3",
+    "html": "0.0.7",
+    "karma-lasso": "^1.0.0",
+    "lasso-require": "^1.3.6",
+    "lasso-cli": "^1.1.10",
+    "mocha": "^2.1.0",
+    "supertest": "^0.15.0"
+  },
+  "dependencies": {
+    "axios": "^0.5.4",
+    "bluebird": "^2.7.1",
+    "bootstrap": "^3.3.5",
+    "bootstrap-star-rating": "kristianmandrup/bootstrap-star-rating",
+    "browser-refresh-taglib": "^1.0.3",
+    "co-views": "^0.2.0",
+    "extend": "^3.0.0",
+    "font-awesome": "^4.3.0",
+    "jquery": "^2.1.4",
+    "koa": "^0.14.0",
+    "koa-body-parser": "^1.1.2",
+    "koa-compress": "^1.0.8",
+    "koa-router": "^3.8.0",
+    "koa-scss": "^0.1.1",
+    "koa-static": "^1.4.8",
+    "lasso": "^1.10.0",
+    "lasso-marko": "^2.0.4",
+    "marko": "^1.3.24",
+    "marko-layout": "^1.2.6",
+    "moment": "^2.10.3"
+  }
+}

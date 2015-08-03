@@ -1,0 +1,11 @@
+{
+  "name": "project-app",
+  "version": "0.0.1",
+  "description": "Project app",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC"
+}

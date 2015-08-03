@@ -1,0 +1,11 @@
+{
+  "name": "markoa",
+  "version": "0.0.1",
+  "description": "Markoa",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Kristian Mandrup",
+  "license": "ISC"
+}
