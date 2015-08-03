@@ -42,3 +42,12 @@ let app = markoa.server.configure(koa(), {
 ```
 
 By default the koa server will use port `4000` if no settings are provided.
+
+Local testing
+-------------
+
+Run `npm link` form marko root folder to link the package.
+
+Then from an app or appContainer that uses markoa, use `npm link markoa` to link the dependency, which creates a symbolic link in your `node_modules` pointing to your local markoa package.
+
+Now run `npm install` from your app ;)

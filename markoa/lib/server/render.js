@@ -1,6 +1,6 @@
 'use strict';
 
-var extend = require('extend');
+let extend = require('extend');
 let config = require('./config');
 let marko = config.marko;
 

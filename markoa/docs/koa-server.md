@@ -1,21 +1,22 @@
-## Koa server
+Koa server
+----------
 
-The Koa server is a thin core with a plugin system for inserting various middlewares.
-The middlewares act as a set of transformations on the Request/Response cycle.
+The Koa server is a thin core with a plugin system for inserting various middlewares. The middlewares act as a set of transformations on the Request/Response cycle.
 
 [Koa middlewares](https://github.com/cnpm/koa-middlewares)
 
 For the Rapid Render server, we are currently looking at the following middlewares...
 
-- [koa-logger](https://github.com/koajs/logger) : Logging
-- [koa-static-cache](https://github.com/koajs/koa-static-cache) : Static file cache
-- [koa-safe-jsonp](https://github.com/koajs/koa-safe-jsonp) : JSONP
-- [koa-router](https://github.com/alexmingoia/koa-router) : Routing
-- [koa-jwt](https://github.com/koajs/jwt) : Json Web Tokens (JWT)
-- [koa-csrf](https://github.com/koajs/csrf) : Cross-Site Request Forgery (CSRF)
-- [koa-onerror](https://github.com/koajs/onerror) : Error handling
+-	[koa-logger](https://github.com/koajs/logger) : Logging
+-	[koa-static-cache](https://github.com/koajs/koa-static-cache) : Static file cache
+-	[koa-safe-jsonp](https://github.com/koajs/koa-safe-jsonp) : JSONP
+-	[koa-router](https://github.com/alexmingoia/koa-router) : Routing
+-	[koa-jwt](https://github.com/koajs/jwt) : Json Web Tokens (JWT)
+-	[koa-csrf](https://github.com/koajs/csrf) : Cross-Site Request Forgery (CSRF)
+-	[koa-onerror](https://github.com/koajs/onerror) : Error handling
 
-## Middlewares
+Middlewares
+-----------
 
 To use middlewares you can simpoly include the `koa-middlewares` module like this:
 
@@ -97,7 +98,8 @@ app
   .use(router.allowedMethods());
 ```
 
-## Rapid Render
+Rapid Render
+------------
 
 Rapid Render leverages the Koa server and uses the Marko templating language for an extremely fast and efficient "first render" strategy in a multi page app. Rapid Render enforces some specific conventions to make it easy for the Frontend developers to work on wireframing/layout without having to worry about the internals. The model/data or backend can be completely stubbed using static data, randomized data or fake server. The server can even be simulated "in browser" using [Pretender](https://github.com/trek/pretender) to intercept Ajax request and mock responses.
 
@@ -107,21 +109,18 @@ Pretender will temporarily replace the native XMLHttpRequest object, intercept a
 
 ### File structure overview
 
-`test/fixtures` : sample data to simulate REST API calls
-`/config` : pages configuration
-`/lib` : small libraries of functions
+`test/fixtures` : sample data to simulate REST API calls`/config` : pages configuration`/lib` : small libraries of functions
 
-## Route/Rendering infrastructure
+Route/Rendering infrastructure
+------------------------------
 
 Currently consist of the following files
 
-`route.js` : routing strategy and factory methods
-`render.js` : page rendering strategies
+`route.js` : routing strategy and factory methods`render.js` : page rendering strategies
 
 ### Rendering
 
-Rendering for any page uses a generic rendering mechanism:
-The page must be found in `views/[page name].marko`
+Rendering for any page uses a generic rendering mechanism: The page must be found in `views/[page name].marko`
 
 ```js
 function findTemplate(template, data) {
@@ -135,10 +134,10 @@ module.exports =  function(response, template, data) {
 }
 ```
 
-## Routing
+Routing
+-------
 
-Currently exposes a single factory method. This could be expanded to include alternative factory methods if needed
-for specific cases...
+Currently exposes a single factory method. This could be expanded to include alternative factory methods if needed for specific cases...
 
 ```
 module.exports =  function(app, render, data) {
@@ -150,7 +149,8 @@ module.exports =  function(app, render, data) {
 }
 ```
 
-## Configuration
+Configuration
+-------------
 
 Is done in the `/config` folder, usually via json or YAML files loaded via `loader.js`.
 
@@ -196,23 +196,19 @@ prematch:
     required: true
 ```
 
-## Utils
+Utils
+-----
 
-`utils.js` : basic utility methods like delayed
-`loader.js` : data loaders from various sources such as json files etc
+`utils.js` : basic utility methods like delayed`loader.js` : data loaders from various sources such as json files etc
 
-## Models and data
+Models and data
+---------------
 
-`store.js` : map of available data store retriever functions, grouped by category
-`provider.js` : map of data providers, using available stores, grouped by category
-`data.js`: map of data sets grouped per page. Uses data from provider and loader.
+`store.js` : map of available data store retriever functions, grouped by category`provider.js` : map of data providers, using available stores, grouped by category`data.js`: map of data sets grouped per page. Uses data from provider and loader.
 
 ### Store
 
-The store contains a map of data store retriever functions.
-Each store can be set up to load the data from whatever data source it chooses.
-In the following example, they are simply loaded from json files wrapped by a delayed decorator function
-to simulate realistic network delays for each specific data source.
+The store contains a map of data store retriever functions. Each store can be set up to load the data from whatever data source it chooses. In the following example, they are simply loaded from json files wrapped by a delayed decorator function to simulate realistic network delays for each specific data source.
 
 ```js
 // Retrieves a resource
@@ -221,7 +217,6 @@ function retriever(resource, delay){
   return function () {
     let loadData = delayed(loader.file(resource, 'json'), 1500);
     return loadData.then(function(data){
-      console.log(data);
       return data;
     });
   }
@@ -237,8 +232,7 @@ module.exports = {
 
 ### Providers
 
-The providers aggregate data store retriever functions, grouped per page.
-The `global` providers are available to any page.
+The providers aggregate data store retriever functions, grouped per page. The `global` providers are available to any page.
 
 ```
 module.exports =  {
@@ -280,7 +274,6 @@ module.exports =  {
   }
 }
 ```
-
 
 ### Data
 
@@ -354,8 +347,7 @@ A data structure like the following is thus delivered to each page to use for re
 
 ### Page rendering
 
-The `provider` functions are used with `async-fragment` elements to retrieve the data lazily.
-The `async-fragment-placeholder` is used to indicate what to until the data is retrieved and swapped in to replace the placeholder.
+The `provider` functions are used with `async-fragment` elements to retrieve the data lazily. The `async-fragment-placeholder` is used to indicate what to until the data is retrieved and swapped in to replace the placeholder.
 
 ```html
 <body
@@ -371,18 +363,12 @@ The `async-fragment-placeholder` is used to indicate what to until the data is r
   </async-fragment>
 ```
 
-## Views
+Views
+-----
 
-Views consist of:
-- Pages
-- Layouts
-- Partials
+Views consist of: - Pages - Layouts - Partials
 
-Special
-- Custom tags
-- Macros
-- Helper functions
-- Directives (element, attribute)
+Special - Custom tags - Macros - Helper functions - Directives (element, attribute)
 
 The front end developers should normally only be considered with files in the following directories.
 
@@ -443,6 +429,4 @@ Sample views file structure using the outlined conventions:
 
 The Koa server is initialized and started in `server.js`.
 
-Configuration of the Koa server is done in `koa-config.js`
-You can configure the `port` used, plugins and the rendering strategy (compression, streaming, ...)
-
+Configuration of the Koa server is done in `koa-config.js` You can configure the `port` used, plugins and the rendering strategy (compression, streaming, ...)

@@ -1,7 +1,11 @@
 'use strict';
 // for development/testing
 let markoa = require('markoa');
-let appContainer = markoa.appContainer();
+let serverOpts = {};
+let koaApp = markoa.server(serverOpts).init(function(mws) {
+  mws.minimal();
+});
+let appContainer = markoa.appContainer().init(koaApp);
 var account = require('./lib'); // myself
 account.mountIn(appContainer);
-appContainer.init(koa).start();
+appContainer.start();

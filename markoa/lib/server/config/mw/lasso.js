@@ -1,3 +1,4 @@
+'use strict';
 module.exports = function(app, opts) {
   opts = opts || {};
   let options = opts.lasso;

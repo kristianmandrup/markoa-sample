@@ -10,7 +10,6 @@ module.exports = {
     return bluebird.delay(delay).then(fn);
   },
   loadJson: function(folder, resource) {
-    console.log('loadJson', folder, resource);
     return require(`../${folder}/${resource}.json`);
   },
   loadYaml: function(folder, resource) {

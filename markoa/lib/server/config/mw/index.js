@@ -1,20 +1,10 @@
+'use strict';
 module.exports = function(app, options) {
-  return {
+  let api = {
     defaultList: ['static', 'request', 'response', 'lasso', 'router'],
+    minimalList: ['request', 'response', 'router'],
     list: function() {
       options.mws || this.defaultList;
-    }
-    static: function() {
-      require('./static')(app, options);
-      return this;
-    },
-    request: function() {
-      require('./request')(app, options);
-      return this;
-    },
-    response: function() {
-      require('./response')(app, options);
-      return this;
     },
     // config via list of strings
     config: function(mws) {
@@ -24,10 +14,23 @@ module.exports = function(app, options) {
         if (typeof fn === 'function')
           fn();
       }
+      return this;
     },
-    configAll: function() {
+    minimal: function() {
+      return this.config(this.minimalList);
+    },
+    all: function() {
       for (mw of this.list())
         this.config(mw);
+      return this;
+    }
+  };
+
+  for (let mw of api.defaultList) {
+    api[mw] = function() {
+      require(`./${mw}`)(app, options);
+      return this;
     }
   }
+  return api;
 };

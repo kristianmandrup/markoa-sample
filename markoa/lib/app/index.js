@@ -1,3 +1,6 @@
+'use strict';
+let path = require('path');
+
 function mountPath(root) {
   return path.join(root, '../');
 }
@@ -12,6 +15,6 @@ function config(root, state) {
 module.exports = {
   mountPath: mountPath,
   config: config,
-  mounter: require('./mounter');
+  mounter: require('./mounter'),
   utils: require('../utils')
 }
