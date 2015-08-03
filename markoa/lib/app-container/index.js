@@ -1,5 +1,5 @@
 'use strict';
-let routes = require('./routes');
+let mount = require('./mount');
 
 module.exports = function() {
   return {
@@ -8,24 +8,12 @@ module.exports = function() {
     init: function(koaApp) {
       this.koaApp = koaApp;
       this.routes = routes.init(koaApp);
+      this.mount = mounter(this);
       return this;
-    },
-    // config: Object
-    // state: Object, findTemplate: function
-    mount: function(name, config) {
-      // add app to registry
-      // mount route using config
-      this.apps.push(name);
-      this.routes.add(name, config);
-    },
-    mountApps: function(apps) {
-      for (let app of apps) {
-        this.mount(app.name, app.config);
-      }
     },
     start: function(koaApp) {
       if (koaApp) this.init(koaApp);
       this.koaApp.start();
-    };    
-  }
+    }
+  };
 }
