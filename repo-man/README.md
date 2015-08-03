@@ -30,6 +30,15 @@ Run
 
 Leverages the Markoa appplication architecture for Rapid rendering of static sites and rapid prototyping!!!
 
+Local testing
+-------------
+
+Run `npm link` from markoa root folder to link the package.
+
+Then from an app or appContainer that uses markoa, use `npm link markoa` to link the dependency, which creates a symbolic link in your `node_modules` pointing to your local markoa package.
+
+Now run `npm install` from your app ;)
+
 TODO
 ----
 

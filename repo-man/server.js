@@ -1,16 +1,16 @@
 'use strict';
-let koa    = require('koa');
-let marko  = require('markoa');
+let markoa = require('markoa');
+let path = require('path');
+
 let lassoFile = path.join(__dirname, './lasso-config.json');
-let app = markoa.server.configure(koa(), {port: 4004, lassoFile: lassoFile});
-// init appContainer and mount SPA apps
-let appContainer = require('./lib/app-container');
-appContainer.mountApps(app);
-// create an index route
-//buildRoute('index', '/');
+let serverOpts = {port: 4004, lassoFile: lassoFile};
 
-// TODO: load from json config
+let koaApp = markoa.server(serverOpts).init(function(mws) {
+  mws.minimal();
+});
 
-// create routes for each page
-//for (let page of pages )
-//  buildRoute(page);
+let myAppContainer = require('./lib/app-container');
+myAppContainer.init(koaApp);
+
+// mounting multiple apps on appContainer instance
+// myAppContainer.mountApps(['account']);

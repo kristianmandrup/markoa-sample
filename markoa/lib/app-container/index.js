@@ -16,6 +16,7 @@ module.exports = function() {
     start: function(koaApp) {
       if (koaApp) this.init(koaApp);
       this.koaApp.koaServer.start();
+      return this;
     }
   };
 }
